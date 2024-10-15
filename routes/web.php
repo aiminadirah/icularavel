@@ -6,15 +6,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home2/{name}',function ($name) {
+Route::get('/home/{name}',function ($name) {
     return view('home', ['name' => $name]);
 
 });
 
 Route::get('/home',function (){
     return view('home');
+})->name('home');
 
-});
+Route::get('/about',function (){
+    return view('about');
+})->name('about');;
 
 Route::get('/auth/signin',function () {
     return view('auth.signin');
