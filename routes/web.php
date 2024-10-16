@@ -69,3 +69,4 @@ Route::prefix('food')->group(function () {
             return 'Job details are following';
         })->name('.description');
 });
+require __DIR__.'/feed/web.php';
