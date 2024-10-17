@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,3 +72,14 @@ Route::prefix('food')->group(function () {
         })->name('.description');
 });
 require __DIR__.'/feed/web.php';
+
+Route::middleware('guest')->group(function(){
+Route::get('/auth/signup', [AuthController::class, 'signUp'])->name('auth.signup');
+Route::get('/auth/signin', [AuthController::class, 'signIn'])->name('auth.signin');
+Route::post('/auth/store', [AuthController::class, 'storeUser'])->name('auth.store');
+Route::post('/auth/authenticate', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+
+});
+
+Route::get('/auth/signOut', [AuthController::class, 'signOut'])->name('auth.signOut');
+// Route::get('/ai/feed', [AIController::class, 'generateFeedContent'])->name('ai.feed');

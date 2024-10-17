@@ -12,12 +12,23 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('about')}}">About</a>
           </li>
-          {{-- <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+          </ul>
+
+        {{-- sign out button at the far right --}}
+        <ul class="navbar-nav ms-auto">
+          @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('auth.signOut')}}">Sign Out</a>
+          </li>
+          @endauth
+          @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('auth.signOut')}}">Sign In</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li> --}}
+            <a class="nav-link" href="{{route('auth.signOut')}}">Sign Up</a>
+          </li>
+          @endguest
         </ul>
       </div>
     </div>
